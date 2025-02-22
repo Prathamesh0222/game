@@ -1,7 +1,7 @@
 export default function Signup () {
     return (
         <div className="flex">
-            <div className="w-1/2 h-full bg-cover bg-center bg-[url('./assets/gradient.png')]">
+            <div className="w-1/2 h-[100vh] bg-cover bg-[url('./assets/gradient.png')]">
                 <div className="justify-items-center pt-32">
                 <p className= "text-[48px] font-semibold text-white">Get Started with Us</p>
                 <p className="text-[20px] font-semibold text-white">Personalized game recommendations at your fingertips!</p>
