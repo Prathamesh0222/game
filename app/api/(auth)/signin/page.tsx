@@ -11,12 +11,12 @@ export default function Signin() {
         <p className="text-xl mt-2 text-center md:text-base">
           Enter your credentials to signin
         </p>
-        <div className="flex flex-col md:flex-row gap-4 mt-8 w-full max-w-[396px]">
-          <button className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[198px] hover:bg-neutral-900/80">
+        <div className="flex flex-col md:flex-row gap-4 mt-8 w-full max-w-[366px]">
+          <button className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[192px] hover:bg-neutral-900/80">
             <Image src={google} alt="Google Svg" width={24} height={24} />
             Google
           </button>
-          <button className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[198px] hover:bg-neutral-900/80">
+          <button className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[192px] hover:bg-neutral-900/80">
             <Image src={github} alt="Github Svg" width={24} height={24} />
             Github
           </button>
