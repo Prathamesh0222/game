@@ -64,16 +64,16 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
-        (token.id = user.id),
-          (token.email = user.email),
-          (token.username = user.username);
+        token.id = user.id;
+        token.email = user.email;
+        token.username = user.username;
       }
       return token;
     },
     async session({ session, token }: { session: Session; token: JWT }) {
-      (session.user.id = token.id),
-        (session.user.email = token.email),
-        (session.user.username = token.username);
+      session.user.id = token.id;
+      session.user.email = token.email;
+      session.user.username = token.username;
       return session;
     },
   },
