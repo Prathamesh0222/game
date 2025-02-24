@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import { AuthSession } from "@/provider/AuthSession";
 
 const onest = localFont({
   src: "./fonts/Onest-VariableFont_wght.ttf",
@@ -20,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.variable} antialiased`}>{children}</body>
+      <body className={`${onest.variable} antialiased`}>
+        <AuthSession>{children}</AuthSession>
+      </body>
     </html>
   );
 }
