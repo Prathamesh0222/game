@@ -1,9 +1,36 @@
+"use client";
+
 import Image from "next/image";
 import gradient from "@/app/assets/gradient.png";
 import google from "@/public/google.svg";
 import github from "@/public/github.svg";
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { SigninInput } from "@/app/lib/schema";
 
 export default function Signin() {
+  const [credentials, setCredentials] = useState<SigninInput>({
+    email: "",
+    password: "",
+  });
+
+  const router = useRouter();
+
+  const handleSignin = async () => {
+    const response = await signIn("credentials", {
+      redirect: false,
+      email: credentials.email,
+      password: credentials.password,
+    });
+
+    if (response?.ok) {
+      router.push("/dashboard");
+    } else {
+      console.error("Error in logging user", response);
+    }
+  };
+
   return (
     <main className="grid lg:grid-cols-2 h-screen">
       <div className="flex flex-col justify-center items-center px-4">
@@ -12,11 +39,21 @@ export default function Signin() {
           Enter your credentials to signin
         </p>
         <div className="flex flex-col md:flex-row gap-4 mt-8 w-full max-w-[366px]">
-          <button className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[192px] hover:bg-neutral-900/80">
+          <button
+            onClick={() => {
+              signIn("google", { redirect: true, callbackUrl: "/dashboard" });
+            }}
+            className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[192px] hover:bg-neutral-900/80"
+          >
             <Image src={google} alt="Google Svg" width={24} height={24} />
             Google
           </button>
-          <button className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[192px] hover:bg-neutral-900/80">
+          <button
+            onClick={() => {
+              signIn("github", { redirect: true, callbackUrl: "/dashboard" });
+            }}
+            className="flex justify-center items-center gap-2 rounded-xl font-semibold border border-white/35 p-2.5 w-full md:w-[192px] hover:bg-neutral-900/80"
+          >
             <Image src={github} alt="Github Svg" width={24} height={24} />
             Github
           </button>
@@ -30,15 +67,24 @@ export default function Signin() {
           <label className="mt-4 mb-2">Email</label>
           <input
             placeholder="john@example.com"
+            onChange={(e) =>
+              setCredentials({ ...credentials, email: e.target.value })
+            }
             className="rounded-lg p-4 w-full h-11 bg-[#232323]"
           />
           <label className="mt-4 mb-2">Password</label>
           <input
             type="password"
             placeholder="12345678"
+            onChange={(e) =>
+              setCredentials({ ...credentials, password: e.target.value })
+            }
             className="rounded-lg p-4 w-full h-11 bg-[#232323]"
           />
-          <button className="bg-white text-black p-2 rounded-lg font-semibold h-11 mt-8 w-full">
+          <button
+            onClick={handleSignin}
+            className="bg-white text-black p-2 rounded-lg font-semibold h-11 mt-8 w-full"
+          >
             Submit
           </button>
           <span className="flex flex-col md:flex-row justify-center mt-5 gap-1 text-center">

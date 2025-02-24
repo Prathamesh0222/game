@@ -1,4 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
 import { SigninSchema } from "./schema";
 import { prisma } from "@/config/prisma";
 import bcrypt from "bcryptjs";
@@ -10,6 +12,14 @@ export const authOptions = {
     strategy: "jwt" as const,
   },
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || "",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+    }),
+    GithubProvider({
+      clientId: process.env.GITHUB_ID || "",
+      clientSecret: process.env.GITHUB_SECRET || "",
+    }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -60,7 +70,7 @@ export const authOptions = {
   pages: {
     signIn: "/api/signin",
   },
-  secrets: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }: { token: JWT; user?: User }) {
       if (user) {
