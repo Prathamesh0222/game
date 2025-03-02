@@ -2,38 +2,34 @@
 
 import Image from "next/image";
 import gradient from "@/app/assets/gradient.png";
-import google from "@/public/google.svg";
-import github from "@/public/github.svg";
-import { signIn } from "next-auth/react";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { SigninInput } from "@/app/lib/schema";
+import { Auth } from "@/app/components/Auth";
 
 export default function Signin() {
-  const [credentials, setCredentials] = useState<SigninInput>({
-    email: "",
-    password: "",
-  });
+  // const [credentials, setCredentials] = useState<SigninInput>({
+  //   email: "",
+  //   password: "",
+  // });
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleSignin = async () => {
-    const response = await signIn("credentials", {
-      redirect: false,
-      email: credentials.email,
-      password: credentials.password,
-    });
+  // const handleSignin = async () => {
+  //   const response = await signIn("credentials", {
+  //     redirect: false,
+  //     email: credentials.email,
+  //     password: credentials.password,
+  //   });
 
-    if (response?.ok) {
-      router.push("/dashboard");
-    } else {
-      console.error("Error in logging user", response);
-    }
-  };
+  //   if (response?.ok) {
+  //     router.push("/dashboard");
+  //   } else {
+  //     console.error("Error in logging user", response);
+  //   }
+  // };
 
   return (
     <main className="grid lg:grid-cols-2 h-screen">
-      <div className="flex flex-col justify-center items-center px-4">
+      <Auth isSignup={false} />
+      {/* <div className="flex flex-col justify-center items-center px-4">
         <h1 className="text-3xl font-semibold text-center">Login</h1>
         <p className="text-xl mt-2 text-center md:text-base">
           Enter your credentials to signin
@@ -98,7 +94,7 @@ export default function Signin() {
             </a>
           </span>
         </div>
-      </div>
+      </div> */}
       <div className="relative lg:block hidden px-4 py-5">
         <Image
           src={gradient}
