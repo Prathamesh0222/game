@@ -1,50 +1,41 @@
+"use client";
+import Image from "next/image";
+import { Auth } from "@/app/components/Auth";
+import gradient from "@/app/assets/gradient.png";
+
 export default function Signup() {
   return (
-    <div className="flex">
-      <div className="w-1/2 h-full bg-cover bg-center bg-[url('./assets/gradient.png')]">
-        <div className="justify-items-center pt-32">
-          <p className="text-[48px] font-semibold text-white">
+    <main className="grid lg:grid-cols-2 h-screen">
+      <div className="relative lg:block hidden px-4 py-5">
+        <Image
+          src={gradient}
+          alt="Decorative background gradient"
+          className="object-cover rounded-xl w-full h-full"
+        />
+        <div className="absolute flex flex-col justify-center items-center inset-0 z-10">
+          <h1 className="text-[48px] font-semibold tracking-tighter leading-none">
             Get Started with Us
-          </p>
-          <p className="text-[20px] font-semibold text-white">
+          </h1>
+          <p className="text-[18px] font-semibold">
             Personalized game recommendations at your fingertips!
           </p>
-        </div>
-        <div className="justify-items-center">
-          <div className="pt-8 pb-6">
-            <button
-              type="button"
-              className="w-[300px] py-4 bg-white text-black font-semibold text-center text-[20px] rounded-lg"
-            >
+          <div className="space-y-6 mt-8">
+            <div className="p-3.5 bg-white text-black rounded-xl font-semibold w-[300px] text-center text-lg">
               Signup Your Account
-            </button>
-          </div>
-          <div className="pb-6">
-            <button
-              type="button"
-              className="w-[300px] py-4 bg-white text-black font-semibold text-center text-[20px] rounded-lg"
-            >
+            </div>
+            <div className="p-3.5 bg-white/30 rounded-xl font-semibold w-[300px] text-center text-lg">
               Choose Your Preferences
-            </button>
-          </div>
-          <div className="pb-6">
-            <button
-              type="button"
-              className="w-[300px] py-4 bg-white text-black font-semibold text-center text-[20px] rounded-lg"
-            >
+            </div>
+            <div className="p-3.5 bg-white/30 rounded-xl font-semibold w-[300px] text-center text-lg">
               Get Recommendations
-            </button>
-          </div>
-          <div className="pb-6">
-            <button
-              type="button"
-              className="w-[300px] py-4 bg-white text-black font-semibold text-center text-[20px] rounded-lg"
-            >
+            </div>
+            <div className="p-3.5 bg-white/30 rounded-xl font-semibold w-[300px] text-center text-lg">
               Save & Share
-            </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Auth isSignup={true} />
+    </main>
   );
 }
