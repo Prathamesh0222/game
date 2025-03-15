@@ -20,6 +20,15 @@ export const Auth = ({ isSignup = false }: AuthFormProps) => {
     ...(isSignup && { username: "" }),
   });
 
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const handleToggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode)
+
+    document.body.classList.toggle('dark-mode');
+  }; 
+
   const handleOauthSignin = (provider: "google" | "github") => {
     signIn(provider, { redirect: false, callbackUrl: "/dashboard" });
   };
@@ -53,6 +62,15 @@ export const Auth = ({ isSignup = false }: AuthFormProps) => {
 
   return (
     <div className="flex flex-col justify-center items-center px-4">
+      
+      {/* <div className="inline-flex items-center cursor-pointer py-20">
+        <input type="checkbox" value="" className="sr-only peer" />
+        <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+        <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300" onClick={handleToggleDarkMode}>{isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}</span>
+      </div> */}
+      <div className="py-8">
+        <button type="button" className="text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  dark:text-gray-200 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800" onClick={handleToggleDarkMode}>{isDarkMode ? "Switch to light mode": "Switch to dark mode"}</button>
+      </div>
       <h1 className="text-3xl font-semibold text-center">
         {isSignup ? "Register" : "Login"}
       </h1>

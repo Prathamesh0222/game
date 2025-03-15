@@ -19,3 +19,8 @@ body {
   background: var(--background);
   font-family: var(--font-onest);
 }
+
+.dark-mode {
+  background-color: #000;
+  color: #fff;
+}
