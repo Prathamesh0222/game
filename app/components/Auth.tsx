@@ -69,7 +69,7 @@ export const Auth = ({ isSignup = false }: AuthFormProps) => {
         <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300" onClick={handleToggleDarkMode}>{isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}</span>
       </div> */}
       <div className="py-8">
-        <button type="button" className="text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  dark:text-gray-200 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800" onClick={handleToggleDarkMode}>{isDarkMode ? "Switch to light mode": "Switch to dark mode"}</button>
+        <button type="button" className="text-gray-900 hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2  dark:text-gray-200 dark:hover:text-white dark:hover:bg-gray-300 dark:focus:ring-gray-800" onClick={handleToggleDarkMode}>{isDarkMode ? "Switch to light mode": "Switch to dark mode"}</button>
       </div>
       <h1 className="text-3xl font-semibold text-center">
         {isSignup ? "Register" : "Login"}
